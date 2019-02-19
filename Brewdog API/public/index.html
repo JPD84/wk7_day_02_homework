@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Brewdog API</title>
+	<script src="./js/bundle.js"></script>
+</head>
+<body>
+
+	<h1>Brewdog API</h1>
+
+	<div id="app">
+			<label for="select_beer">Select a beer:</label>
+			<select v-on:change="selectBeer" id="select_beer" v-model="selectBeer">
+			   <option disabled value=''>Select a beer</option>
+			   <option v-for="(beer, index) in beers" :value="index">{{beer.name}}</option>
+			   <img :alt = "beer.name" :src = "image_url"/>
+		   </select>
+
+		   <div id = "beer_description" v-if="beerDescription">
+				<button v-on:click="beerDescription">Beer Description</button>
+			</div>
+
+			<div id = "selected_beer" v-if="selectedBeer">
+					<button v-on:click="addToFav">Add beer</button>
+					<li>{{beer.name}}</li>
+				</div>
+		 
+				<div v-for="beers in favouriteBeers">
+					<li>{{beer.name}}</li>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+<!-- MVP
+Your app should be able to:
+
+- Allow the user to display information about a selected beer
+  (at least a beer's image, name and description).
+- Allow users to add their favourite beers to a list that is also
+  displayed in your app.
+- Add functionality for users to remove beers from their favourites
+  list.
+ -->
